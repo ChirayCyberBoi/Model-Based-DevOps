@@ -18,17 +18,23 @@
         <h2>Create Your Pipeline</h2>
         <p>Design and manage your software development workflow.</p>
 
-        <div class="pipeline">
-            <div class="stage">Source Code</div>
-            <span>→</span>
-            <div class="stage">Build</div>
-            <span>→</span>
-            <div class="stage">Testing</div>
-            <span>→</span>
-            <div class="stage">Deployment</div>
-        </div>
+        <div class="workflow-form">
 
-        <button>Create Workflow</button>
+    <label>Workflow Name:</label>
+    <input type="text" id="workflowName" value="My First Pipeline">
+
+    <h3>Select Pipeline Stages:</h3>
+
+    <label><input type="checkbox" value="Source Code" checked> Source Code</label>
+    <label><input type="checkbox" value="Build" checked> Build</label>
+    <label><input type="checkbox" value="Testing" checked> Testing</label>
+    <label><input type="checkbox" value="Deployment" checked> Deployment</label>
+
+</div>
+
+<button id="createWorkflow">Create Workflow</button>
+
+<pre id="output"></pre>
     </main>
 <script src="script.js"></script>
 </body>

@@ -1,23 +1,44 @@
+
 import yaml
 
 
 def generate_pipeline(workflow):
+
+    steps = []
+
+    for stage in workflow["stages"]:
+
+        if stage == "Source Code":
+            steps.append({
+                "name": "Checkout Source Code",
+                "uses": "actions/checkout@v4"
+            })
+
+        elif stage == "Build":
+            steps.append({
+                "name": "Build Project",
+                "run": "echo Building project..."
+            })
+
+        elif stage == "Testing":
+            steps.append({
+                "name": "Run Tests",
+                "run": "echo Running tests..."
+            })
+
+        elif stage == "Deployment":
+            steps.append({
+                "name": "Deploy Project",
+                "run": "echo Deploying project..."
+            })
+
     pipeline = {
         "name": workflow["name"],
         "on": ["push"],
         "jobs": {
             "build-and-test": {
                 "runs-on": "ubuntu-latest",
-                "steps": [
-                    {
-                        "name": "Checkout code",
-                        "uses": "actions/checkout@v4"
-                    },
-                    {
-                        "name": "Run workflow",
-                        "run": "echo Pipeline executed successfully!"
-                    }
-                ]
+                "steps": steps
             }
         }
     }
