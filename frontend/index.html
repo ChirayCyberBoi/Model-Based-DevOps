@@ -23,12 +23,39 @@
     <label>Workflow Name:</label>
     <input type="text" id="workflowName" value="My First Pipeline">
 
-    <h3>Select Pipeline Stages:</h3>
+  <h3>Design Your Pipeline:</h3>
 
-    <label><input type="checkbox" value="Source Code" checked> Source Code</label>
-    <label><input type="checkbox" value="Build" checked> Build</label>
-    <label><input type="checkbox" value="Testing" checked> Testing</label>
-    <label><input type="checkbox" value="Deployment" checked> Deployment</label>
+<div id="stageList">
+
+    <div class="stage-item">
+        <input type="checkbox" value="Source Code" checked>
+        <span>Source Code</span>
+        <button type="button" class="move-up">↑</button>
+        <button type="button" class="move-down">↓</button>
+    </div>
+
+    <div class="stage-item">
+        <input type="checkbox" value="Build" checked>
+        <span>Build</span>
+        <button type="button" class="move-up">↑</button>
+        <button type="button" class="move-down">↓</button>
+    </div>
+
+    <div class="stage-item">
+        <input type="checkbox" value="Testing" checked>
+        <span>Testing</span>
+        <button type="button" class="move-up">↑</button>
+        <button type="button" class="move-down">↓</button>
+    </div>
+
+    <div class="stage-item">
+        <input type="checkbox" value="Deployment" checked>
+        <span>Deployment</span>
+        <button type="button" class="move-up">↑</button>
+        <button type="button" class="move-down">↓</button>
+    </div>
+
+</div>
 
 </div>
 
