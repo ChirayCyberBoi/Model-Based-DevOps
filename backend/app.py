@@ -25,14 +25,14 @@ def generate():
 
     errors = validate_workflow(name, stages)
 
-if errors:
-    return jsonify({
-        "errors": errors
-    }), 400
+    if errors:
+        return jsonify({
+            "errors": errors
+        }), 400
 
-workflow = create_workflow(name, stages)
+    workflow = create_workflow(name, stages)
 
-yaml_output = generate_pipeline(workflow)
+    yaml_output = generate_pipeline(workflow)
 
     return jsonify({
         "workflow": workflow,
