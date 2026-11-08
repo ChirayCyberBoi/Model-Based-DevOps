@@ -64,3 +64,31 @@ document.getElementById("downloadWorkflow").addEventListener("click", function (
     URL.revokeObjectURL(url);
 });
 
+document.getElementById("stageList").addEventListener("click", function (event) {
+
+    const row = event.target.closest(".stage-item");
+
+    if (!row) return;
+
+    if (event.target.classList.contains("move-up")) {
+
+        const previous = row.previousElementSibling;
+
+        if (previous) {
+            row.parentNode.insertBefore(row, previous);
+        }
+
+    }
+
+    if (event.target.classList.contains("move-down")) {
+
+        const next = row.nextElementSibling;
+
+        if (next) {
+            row.parentNode.insertBefore(next, row);
+        }
+
+    }
+});
+
+
