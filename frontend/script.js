@@ -1,4 +1,5 @@
 
+let generatedYAML = "";
 
 document.getElementById("createWorkflow").addEventListener("click", async function () {
 
@@ -25,5 +26,29 @@ document.getElementById("createWorkflow").addEventListener("click", async functi
 
     const result = await response.json();
 
-    document.getElementById("output").textContent = result.yaml;
+    generatedYAML = result.yaml;
+
+    document.getElementById("output").textContent = generatedYAML;
+
+    document.getElementById("downloadWorkflow").style.display = "inline-block";
 });
+
+
+document.getElementById("downloadWorkflow").addEventListener("click", function () {
+
+    const blob = new Blob([generatedYAML], {
+        type: "text/yaml"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "workflow.yml";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+});
+
