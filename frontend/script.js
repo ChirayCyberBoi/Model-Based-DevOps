@@ -26,7 +26,19 @@ document.getElementById("createWorkflow").addEventListener("click", async functi
 
     const result = await response.json();
 
-    generatedYAML = result.yaml;
+if (!response.ok) {
+
+    document.getElementById("output").textContent =
+        result.errors.join("\n");
+
+    document.getElementById("downloadWorkflow").style.display = "none";
+
+    generatedYAML = "";
+
+    return;
+}
+
+generatedYAML = result.yaml;
 
     document.getElementById("output").textContent = generatedYAML;
 
