@@ -71,3 +71,27 @@ button {
 button:hover {
     background: #1d4ed8;
 }
+.stage-item button {
+    background: #e5e7eb;
+    color: #333;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.stage-item button:hover {
+    background: #d1d5db;
+}
+
+.stage-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.stage-item span {
+    min-width: 110px;
+}
