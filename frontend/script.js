@@ -89,6 +89,9 @@ document.getElementById("stageList").addEventListener("click", function (event) 
         }
 
     }
+        if (event.target.classList.contains("remove-stage")) {
+        row.remove();
+    }
 });
 
 
