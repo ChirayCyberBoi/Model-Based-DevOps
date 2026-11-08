@@ -1,6 +1,6 @@
 
 from flask import Flask, request, jsonify, send_from_directory
-from model_generator import create_workflow
+from model_generator import create_workflow, validate_workflow
 from pipeline_generator import generate_pipeline
 
 app = Flask(
@@ -23,9 +23,16 @@ def generate():
     name = data.get("name")
     stages = data.get("stages")
 
-    workflow = create_workflow(name, stages)
+    errors = validate_workflow(name, stages)
 
-    yaml_output = generate_pipeline(workflow)
+if errors:
+    return jsonify({
+        "errors": errors
+    }), 400
+
+workflow = create_workflow(name, stages)
+
+yaml_output = generate_pipeline(workflow)
 
     return jsonify({
         "workflow": workflow,
