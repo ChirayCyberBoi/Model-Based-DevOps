@@ -14,13 +14,18 @@ def validate_workflow(name, stages):
 
     errors = []
 
-    if not name or not name.strip():
+    # Validate workflow name
+    if not isinstance(name, str) or not name.strip():
         errors.append("Workflow name cannot be empty.")
 
-    if not stages:
+    elif len(name.strip()) > 50:
+        errors.append("Workflow name cannot exceed 50 characters.")
+
+    # Validate stages
+    if not isinstance(stages, list) or not stages:
         errors.append("Select at least one pipeline stage.")
 
-    if stages:
+    else:
         if len(stages) != len(set(stages)):
             errors.append("Duplicate stages are not allowed.")
 
@@ -34,7 +39,7 @@ def validate_workflow(name, stages):
 def create_workflow(name, stages):
 
     workflow = {
-        "name": name,
+        "name": name.strip(),
         "stages": stages
     }
 
