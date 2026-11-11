@@ -93,5 +93,62 @@ document.getElementById("stageList").addEventListener("click", function (event) 
         row.remove();
     }
 });
+function updatePipelinePreview() {
+
+    const preview = document.getElementById("pipelinePreview");
+
+    const checkboxes = document.querySelectorAll(
+        "#stageList input[type='checkbox']:checked"
+    );
+
+    preview.innerHTML = "";
+
+    if (checkboxes.length === 0) {
+        preview.textContent = "No stages selected.";
+        return;
+    }
+
+    checkboxes.forEach((checkbox, index) => {
+
+        const stage = document.createElement("div");
+        stage.className = "stage";
+        stage.textContent = checkbox.value;
+
+        preview.appendChild(stage);
+
+        if (index < checkboxes.length - 1) {
+            const arrow = document.createElement("span");
+            arrow.textContent = "→";
+            preview.appendChild(arrow);
+        }
+
+    });
+}
+
+
+// Update when stages are selected or unchecked
+document.getElementById("stageList").addEventListener(
+    "change",
+    updatePipelinePreview
+);
+
+// Update after moving or removing stages
+document.getElementById("stageList").addEventListener(
+    "click",
+    function () {
+        setTimeout(updatePipelinePreview, 0);
+    }
+);
+
+// Update after adding a stage
+document.getElementById("addStage").addEventListener(
+    "click",
+    function () {
+        setTimeout(updatePipelinePreview, 0);
+    }
+);
+
+// Initial preview
+updatePipelinePreview();
 
 
