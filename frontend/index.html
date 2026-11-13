@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <button id="themeToggle">🌙 Dark Mode</button>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model-Based DevOps</title>
@@ -23,9 +23,10 @@
     <label>Workflow Name:</label>
     <input type="text" id="workflowName" value="My First Pipeline">
 
-  <h3>Design Your Pipeline:</h3>
+    <h3>Design Your Pipeline:</h3>
 
 <div id="stageList">
+    
     <div class="add-stage">
 
     <select id="newStage">
@@ -39,7 +40,6 @@
     <button type="button" id="addStage">Add Stage</button>
 
 </div>
-
     <div class="stage-item">
         <input type="checkbox" value="Source Code" checked>
         <span>Source Code</span>
@@ -73,7 +73,6 @@
     </div>
 
 </div>
-
 </div>
 <h3>Pipeline Preview</h3>
 
@@ -83,11 +82,19 @@
 <button id="createWorkflow">Create Workflow</button>
 
 <pre id="output"></pre>
-        <button id="downloadWorkflow" style="display: none;">
+<h3>Workflow History</h3>
+
+<div id="workflowHistory">
+    No workflows generated yet.
+</div>
+<button id="downloadWorkflow" style="display: none;">
     Download YAML
 </button>
-        <button id="copyWorkflow" style="display: none;">
+<button id="copyWorkflow" style="display: none;">
     Copy YAML
+</button>
+<button id="downloadJSON" style="display: none;">
+    Download JSON Model
 </button>
     </main>
 <script src="script.js"></script>
